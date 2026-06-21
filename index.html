@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Aurora Designs</title>
+  <meta name="description" content="Creative Design Studio — Find us on YouTube, Facebook & Instagram" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100vh;
+      background: #07071a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Jost', sans-serif;
+      padding: 24px 16px;
+    }
+
+    /* Aurora background */
+    .aurora-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .aurora-bg::before,
+    .aurora-bg::after,
+    .aurora-bg .blob3 {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.22;
+    }
+    .aurora-bg::before {
+      width: 500px; height: 400px;
+      top: -100px; left: -100px;
+      background: radial-gradient(circle, #a78bfa, transparent 70%);
+      animation: drift1 12s ease-in-out infinite alternate;
+    }
+    .aurora-bg::after {
+      width: 450px; height: 400px;
+      bottom: -80px; right: -80px;
+      background: radial-gradient(circle, #38bdf8, transparent 70%);
+      animation: drift2 14s ease-in-out infinite alternate;
+    }
+    .blob3 {
+      display: block;
+      width: 350px; height: 300px;
+      top: 30%; right: 10%;
+      background: radial-gradient(circle, #34d399, transparent 70%);
+      opacity: 0.14;
+      animation: drift3 16s ease-in-out infinite alternate;
+    }
+
+    @keyframes drift1 { from { transform: translate(0,0); } to { transform: translate(60px, 40px); } }
+    @keyframes drift2 { from { transform: translate(0,0); } to { transform: translate(-50px, -40px); } }
+    @keyframes drift3 { from { transform: translate(0,0); } to { transform: translate(-40px, 30px); } }
+
+    /* Card */
+    .card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 44px 28px 36px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Logo */
+    .logo-ring {
+      width: 84px; height: 84px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #a78bfa 0%, #38bdf8 50%, #34d399 100%);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+      box-shadow: 0 0 40px rgba(167,139,250,0.4), 0 0 80px rgba(56,189,248,0.15);
+    }
+    .logo-inner {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: #0d0d1f;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px; font-weight: 600;
+      background: linear-gradient(135deg, #a78bfa, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+    }
+    .logo-inner-wrap {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: #0d0d1f;
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Title */
+    .name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px; font-weight: 600;
+      color: #fff;
+      letter-spacing: 2.5px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .tagline {
+      font-size: 11px; font-weight: 300;
+      letter-spacing: 3.5px;
+      color: rgba(180,160,255,0.65);
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    /* Links */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 15px 18px;
+      border-radius: 16px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .link-btn:hover {
+      transform: translateY(-3px);
+    }
+    .link-btn:focus-visible {
+      outline: 2px solid #a78bfa;
+      outline-offset: 3px;
+    }
+
+    .link-btn.yt {
+      background: rgba(255,55,55,0.1);
+      border-color: rgba(255,80,80,0.2);
+    }
+    .link-btn.yt:hover {
+      box-shadow: 0 8px 28px rgba(255,55,55,0.2);
+      border-color: rgba(255,80,80,0.4);
+    }
+    .link-btn.fb {
+      background: rgba(66,103,212,0.1);
+      border-color: rgba(80,120,255,0.2);
+    }
+    .link-btn.fb:hover {
+      box-shadow: 0 8px 28px rgba(66,103,212,0.2);
+      border-color: rgba(80,120,255,0.4);
+    }
+    .link-btn.ig {
+      background: rgba(225,48,108,0.1);
+      border-color: rgba(225,70,140,0.2);
+    }
+    .link-btn.ig:hover {
+      box-shadow: 0 8px 28px rgba(225,48,108,0.2);
+      border-color: rgba(225,70,140,0.4);
+    }
+
+    .icon-wrap {
+      width: 40px; height: 40px;
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .yt .icon-wrap { background: rgba(255,55,55,0.15); }
+    .fb .icon-wrap { background: rgba(66,103,212,0.15); }
+    .ig .icon-wrap { background: rgba(225,48,108,0.15); }
+
+    .link-label { flex: 1; }
+    .link-label .platform {
+      font-size: 10px; font-weight: 400;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .link-label .handle {
+      font-size: 14px; font-weight: 500;
+      color: #fff;
+    }
+    .yt .platform  { color: rgba(255,120,120,0.8); }
+    .fb .platform  { color: rgba(130,160,255,0.8); }
+    .ig .platform  { color: rgba(255,120,180,0.8); }
+
+    .arrow {
+      color: rgba(255,255,255,0.25);
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .divider {
+      width: 36px; height: 1px;
+      background: rgba(255,255,255,0.1);
+      margin: 28px 0 18px;
+    }
+    .footer {
+      font-size: 11px;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .aurora-bg::before, .aurora-bg::after, .blob3 { animation: none; }
+      .link-btn { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="aurora-bg" aria-hidden="true">
+    <span class="blob3"></span>
+  </div>
+
+  <main class="card">
+    <div class="logo-ring" aria-hidden="true">
+      <div class="logo-inner-wrap">
+        <span class="logo-inner">AD</span>
+      </div>
+    </div>
+
+    <h1 class="name">The Aurora Designs</h1>
+    <p class="tagline">Creative Design Studio</p>
+
+    <nav class="links" aria-label="Social media links">
+
+      <a class="link-btn yt"
+         href="https://youtube.com/@theauroradesigns?si=u6isVNd-SjcBU8Yd"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.4a2.78 2.78 0 0 0 1.95-1.97A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z" fill="rgba(255,80,80,0.95)"/>
+            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="link-label">
+          <div class="platform">YouTube</div>
+          <div class="handle">@theauroradesigns</div>
+        </div>
+        <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <a class="link-btn fb"
+         href="https://www.facebook.com/share/1CvYKtjQ3t/?mibextid=wwXIfr"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" fill="rgba(110,150,255,0.95)"/>
+          </svg>
+        </div>
+        <div class="link-label">
+          <div class="platform">Facebook</div>
+          <div class="handle">The Aurora Designs</div>
+        </div>
+        <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <a class="link-btn ig"
+         href="https://www.instagram.com/the_aurora_designs_?igsh=MTA1cG5kZ2tubGwx"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="icon-wrap" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="rgba(230,90,170,0.95)" stroke-width="2" fill="none"/>
+            <circle cx="12" cy="12" r="4" stroke="rgba(230,90,170,0.95)" stroke-width="2" fill="none"/>
+            <circle cx="17.5" cy="6.5" r="1.3" fill="rgba(230,90,170,0.95)"/>
+          </svg>
+        </div>
+        <div class="link-label">
+          <div class="platform">Instagram</div>
+          <div class="handle">@the_aurora_designs_</div>
+        </div>
+        <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+    </nav>
+
+    <div class="divider" aria-hidden="true"></div>
+    <p class="footer">✦ design that inspires ✦</p>
+  </main>
+
+</body>
+</html>
